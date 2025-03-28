@@ -50,6 +50,8 @@ O sistema contém 3 EntryPoints:
 
 #### Daily Entry
 
+![Fluxo de Processo](https://github.com/DiegoModesto/TesteCarrefour/blob/main/Artefacts/FluxoDailyEntry.png?raw=true)
+
 Este repositório é simplesmente um sistema que recebe valores de consumo diariamente (tanto entrada(+) quanto saída(-)).
 
 Após o cadastro do registro, uma notificação é enviada ao MQ que irá armazenar a informação.
@@ -61,6 +63,9 @@ RabbitMQ
 ![rabbit.png](https://github.com/DiegoModesto/TesteCarrefour/blob/main/Artefacts/rabbit.png?raw=true)
 
 ### Daily Report
+
+![Fluxo de Processo](https://github.com/DiegoModesto/TesteCarrefour/blob/main/Artefacts/FluxoDailyReport.png?raw=true)
+![Worker](https://github.com/DiegoModesto/TesteCarrefour/blob/main/Artefacts/FluxoWorker.png?raw=true)
 
 Este projeto contém dois EntryPoints, um que irá gerar exclusivamente o registro de consumo, e armazenar os dados.
 
