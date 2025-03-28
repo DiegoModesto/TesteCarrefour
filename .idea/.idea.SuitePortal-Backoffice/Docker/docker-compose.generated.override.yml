@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  dm.presentation.webapi:
+    build:
+      context: "/Users/diegosanches/Documents/Repos/ProjectDome/SuitePortal/SuitePortal-Backoffice"
+      dockerfile: "src/DM.Presentation.WebApi/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/DM.Presentation.WebApi.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "dm.presentation.webapi:dev"
+    ports: []
+    volumes:
+    - "/Users/diegosanches/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/diegosanches/Documents/Repos/ProjectDome/SuitePortal/SuitePortal-Backoffice/src/DM.Presentation.WebApi:/app:rw"
+    - "/Users/diegosanches/Documents/Repos/ProjectDome/SuitePortal/SuitePortal-Backoffice:/src:rw"
+    working_dir: "/app"

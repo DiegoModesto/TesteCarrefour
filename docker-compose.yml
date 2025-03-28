@@ -1,0 +1,76 @@
+﻿services:
+  daily_entry_api:
+    image: dm.presentation.webapi
+    container_name: DailyEntryAPI
+    depends_on:
+      - daily_entry_db
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: src/DailyEntry/DM.Presentation.WebApi/Dockerfile
+    networks:
+      - app_network
+
+  daily_report_api:
+    image: dm.presentation.webapi
+    container_name: DailyReportAPI
+    depends_on:
+      - daily_report_db
+      - rabbitmq
+    build:
+      context: .
+      dockerfile: src/DailyReport/DM.Presentation.WebApi/Dockerfile
+    networks:
+      - app_network
+
+  daily_entry_db:
+    image: postgres
+    container_name: DailyEntryDB
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: daily_entry
+    ports:
+      - 5030:5432
+    volumes:
+      - daily_entry_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  daily_report_db:
+    image: postgres
+    container_name: DailyReportDB
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: daily_report
+    ports:
+      - 5031:5432
+    volumes:
+      - daily_report_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: RabbitMQ
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - app_network
+
+volumes:
+  daily_entry_data:
+  daily_report_data:
+
+networks:
+  app_network:

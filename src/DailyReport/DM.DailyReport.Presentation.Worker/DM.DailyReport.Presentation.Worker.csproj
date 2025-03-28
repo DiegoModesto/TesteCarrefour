@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-DM.DailyReport.Presentation.Worker-b89e1758-db4c-4e2f-abe8-ecb4a9b42c12</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DM.SharedKernel\DM.SharedKernel.csproj" />
+    <ProjectReference Include="..\DM.DailyReport.Application\DM.DailyReport.Application.csproj" />
+    <ProjectReference Include="..\DM.DailyReport.Domain\DM.DailyReport.Domain.csproj" />
+    <ProjectReference Include="..\DM.DailyReport.Infra\DM.DailyReport.Infra.csproj" />
+  </ItemGroup>
+</Project>
